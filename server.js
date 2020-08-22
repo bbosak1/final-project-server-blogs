@@ -45,29 +45,29 @@ app.get('/api/blogs', function (req, res) {
 });
 
 // Create a blog
-// app.post('/api/blogs', function (req, res) {
+app.post('/api/blogs', function (req, res) {
 
-//     console.log("Creating blog...");
+    console.log("Creating blog...");
 
-//     Blog.create({
-//         date: req.body.date,
-//         time: req.body.time,
-//         name: req.body.name,
-//         done: false
-//     }, function (err, blog) {
-//         if (err) {
-//             res.send(err);
-//         }
+    Blog.create({
+        title: req.body.title,
+        shortDescr: req.body.shortDescr,
+        href: req.body.href,
+        done: false
+    }, function (err, blog) {
+        if (err) {
+            res.send(err);
+        }
 
-//         // create and return blogs
-//         Blog.find(function (err, blogs) {
-//             if (err)
-//                 res.send(err);
-//             res.json(blogs);
-//         });
-//     });
-//
-// });
+        // create and return blogs
+        Blog.find(function (err, blogs) {
+            if (err)
+                res.send(err);
+            res.json(blogs);
+        });
+    });
+
+});
 
 
 // Start app and listen on port 8082
